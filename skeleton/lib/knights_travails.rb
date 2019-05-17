@@ -12,12 +12,13 @@ class KnightPathFinder
       valid_moves << valid_move
     end
 
+    valid_moves.select! { |move| (move[0] <= 7 && move[1] <= 7) && (move[0] >= 0 && move[1] >= 0) }
     valid_moves
   end
 
   def initialize(pos)
     @root_node = PolyTreeNode.new(pos)
-    #@move_tree = build_move_tree(@root_node)
+    # @move_tree = build_move_tree(@root_node)
     @considered_positions = [pos]
   end
 
@@ -27,7 +28,11 @@ class KnightPathFinder
     v_moves.each { |move| @considered_positions << move }
     v_moves
   end
+
+  # def build_move_tree
+
+  # end
 end
 
 # knight = KnightPathFinder.new([0,0])
-# p KnightPathFinder.valid_moves([2,3])
+ p KnightPathFinder.valid_moves([7,7])
