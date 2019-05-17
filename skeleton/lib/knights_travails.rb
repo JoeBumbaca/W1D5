@@ -21,8 +21,13 @@ class KnightPathFinder
     @considered_positions = [pos]
   end
 
-
+  def new_move_positions(pos)
+    v_moves = valid_moves(pos)
+    v_moves.reject! { |move| @considered_positions.include?(move) }
+    v_moves.each { |move| @considered_positions << move }
+    v_moves
+  end
 end
 
-knight = KnightPathFinder.new([0,0])
-p KnightPathFinder.valid_moves([2,3])
+# knight = KnightPathFinder.new([0,0])
+# p KnightPathFinder.valid_moves([2,3])
